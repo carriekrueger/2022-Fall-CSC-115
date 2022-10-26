@@ -29,5 +29,105 @@ public class MethodDemo {
         System.out.println("Enter number 2:");
         num2 = sc.nextInt();
 
+        // Display a menu of options
+        // The method is a CODE DISPLACER method (it's void)
+
+        showMenu();  
+
+        // get user's choice
+        // could make another code displacer method (same with above input)
+        // but Scanner scope issues
+
+        System.out.println("Enter your choice:");
+        int choice = sc.nextInt();
+
+        // do the thing the user wants to do by calling the appropriate method
+
+        // Where are the dots? Don't need dot posession if your method is 
+        // CALLED in the same class where it is DEFINED
+
+        if(choice == 1) {
+            add(num1, num2);  // a method that shows how PARAMETERS work
+        }
+
+        if(choice == 2) {
+            divide(num1, num2);  // more parameters
+        }
+
+        if(choice == 3) {
+            // returning a value and saving it to a variable 
+            // when you want to do something with the result 
+            int answer = square(num1);
+            System.out.println(answer);
+
+            //System.out.println(square(num1));  // returning to a print statement
+        }
+
+        if(choice == 4) {
+            //int answer = exp(num1, num2); // returning a value and saving it to a variable
+            //System.out.println(answer);
+
+            System.out.println(exp(num1, num2));  // returning to a print statement
+        }
+
+
     }
+
+    // This method displays a menu of options
+    public static void showMenu() {
+        System.out.println("\nPlease choose from the following:");
+        System.out.println("\t1. Add the two numbers");
+        System.out.println("\t2. Divide the two numbers");
+        System.out.println("\t3. Square the first number");
+        System.out.println("\t4. Exponentiate the two numbers");
+
+        System.out.println();
+    }
+
+    // This method takes two ints and displays the sum
+    // NOTE: parameters (variables) catch the arguments (values) sent into the method
+
+    public static void add(int a, int b) {
+        System.out.println("The sum of " + a + " + " + b + " is " + (a + b));
+    }
+
+    // This method takes two ints and displays the quotient
+    public static void divide(int a, int b) {
+        if(b == 0) {
+            System.out.println("You can't divide by 0!");
+        } else {
+            System.out.println("The quotient of " + a + " / " + b + " is " + (1.0*a / b)); 
+            // ** int division...
+        }
+        
+    }
+
+    // This method takes an int and returns the square of it
+    public static int square(int a) {
+        int sqr = a * a;
+        return sqr;
+
+        // return a * a;    // shorter
+    }
+
+    // This method takes two ints.
+    // It returns a raised to the b power.
+    public static int exp(int a, int b){
+        // return Math.pow(a, b);      // would need to change the return type to double
+                                       // cheat code!
+
+        // let's write our own!
+
+        int count  = 1;
+        int answer = 1;
+
+        while(count <= b) {
+            answer *= a;
+            count++;
+        }
+
+        return answer;
+    }
+
+    
 }
